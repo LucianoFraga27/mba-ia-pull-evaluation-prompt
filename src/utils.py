@@ -27,13 +27,13 @@ def load_yaml(file_path: str) -> Optional[Dict[str, Any]]:
             data = yaml.safe_load(f)
         return data
     except FileNotFoundError:
-        print(f"❌ Arquivo não encontrado: {file_path}")
+        print(f"Arquivo nao encontrado: {file_path}")
         return None
     except yaml.YAMLError as e:
-        print(f"❌ Erro ao parsear YAML: {e}")
+        print(f"Erro ao parsear YAML: {e}")
         return None
     except Exception as e:
-        print(f"❌ Erro ao carregar arquivo: {e}")
+        print(f"Erro ao carregar arquivo: {e}")
         return None
 
 
@@ -57,7 +57,7 @@ def save_yaml(data: Dict[str, Any], file_path: str) -> bool:
 
         return True
     except Exception as e:
-        print(f"❌ Erro ao salvar arquivo: {e}")
+        print(f"Erro ao salvar arquivo: {e}")
         return False
 
 
@@ -78,7 +78,7 @@ def check_env_vars(required_vars: list) -> bool:
             missing_vars.append(var)
 
     if missing_vars:
-        print("❌ Variáveis de ambiente faltando:")
+        print("Variaveis de ambiente faltando:")
         for var in missing_vars:
             print(f"   - {var}")
         print("\nConfigure-as no arquivo .env antes de continuar.")
@@ -98,7 +98,7 @@ def format_score(score: float, threshold: float = 0.9) -> str:
     Returns:
         String formatada com score e símbolo
     """
-    symbol = "✓" if score >= threshold else "✗"
+    symbol = "V" if score >= threshold else "X"
     return f"{score:.2f} {symbol}"
 
 
